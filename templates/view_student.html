@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        ul li span {
+            font-weight: bold;
+            color: #333;
+        }
+        .btn {
+            border-radius: 20px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Profile</h2>
+        <ul>
+            <li><span>ID:</span> {{ student.id_number }}</li>
+            <li><span>Name:</span> {{ student.name }}</li>
+            <li><span>Gender:</span> {{ student.gender }}</li>
+            <li><span>Date of Birth:</span> {{ student.dob }}</li>
+            <li><span>Phone:</span> {{ student.mobile_number }}</li>
+            <li><span>Email:</span> {{ student.email_id }}</li>
+            <li><span>Admission No:</span> {{ student.admission_no }}</li>
+            <li><span>Admission Date:</span> {{ student.admission_date }}</li>
+        </ul>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('manage_students') }}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

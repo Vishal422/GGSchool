@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .form-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            border-radius: 30px;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Add New Book</h1>
+        <div class="form-section mx-auto" style="max-width: 600px;">
+            <form method="POST" action="{{ url_for('add_book') }}">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Book Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter book title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Enter author's name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label">Genre</label>
+                    <input type="text" class="form-control" id="genre" name="genre" placeholder="Enter genre">
+                </div>
+                <div class="mb-3">
+                    <label for="publication_year" class="form-label">Publication Year</label>
+                    <input type="number" class="form-control" id="publication_year" name="publication_year" placeholder="Enter publication year">
+                </div>
+                <div class="mb-3">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter ISBN" required>
+                </div>
+                <div class="mb-3">
+                    <label for="total_copies" class="form-label">Total Copies</label>
+                    <input type="number" class="form-control" id="total_copies" name="total_copies" placeholder="Enter total copies available" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Add Book</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
