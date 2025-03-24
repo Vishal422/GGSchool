@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Study Certificate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Download Study Certificate</h2>
+        <form method="POST">
+            <label for="student_id">Enter Student ID:</label>
+            <input type="text" id="student_id" name="student_id" required>
+            <button type="submit">Fetch Details</button>
+        </form>
+
+        {% if student %}
+        <div class="student-details">
+            <h3>Student Details</h3>
+            <p><strong>Name:</strong> {{ student.name }}</p>
+            <p><strong>Admission No:</strong> {{ student.admission_no }}</p>
+            <p><strong>Class:</strong> {{ student.prev_class }} to {{ student.admission_sought_for }}</p>
+            <p><strong>Years:</strong> {{ student.admission_year }} - {{ student.last_attended_year }}</p>
+            <p><strong>Mother Tongue:</strong> {{ student.mother_tongue }}</p>
+            <a href="{{ url_for('download_certificate', student_id=student.student_id) }}" class="download-btn">Download Certificate</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

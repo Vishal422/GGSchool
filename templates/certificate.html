@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study Certificate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .certificate {
+            border: 5px solid black;
+            padding: 20px;
+            width: 80%;
+            margin: auto;
+        }
+        .certificate h1 {
+            font-size: 24px;
+            text-decoration: underline;
+        }
+        .content {
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+<div class="certificate">
+    <h1>STUDY CERTIFICATE</h1>
+    <p>Govt Girls High School, Malkhed</p>
+    
+    <div class="content">
+        <p>This is to certify that <strong>{{ student.name }}</strong>, son/daughter of <strong>{{ student.father_name }}</strong>, was a student of this institution.</p>
+        <p>Student ID: <strong>{{ student.student_id }}</strong></p>
+        <p>Admission No: <strong>{{ student.admission_no }}</strong></p>
+        <p>Year of Admission: <strong>{{ student.admission_year }}</strong></p>
+        <p>Last Attended Class: <strong>{{ student.passed_class }}</strong></p>
+        
+        <p>This certificate is issued on request for official use.</p>
+
+        <p style="margin-top: 50px;">Principal Signature</p>
+    </div>
+</div>
+
+</body>
+</html>

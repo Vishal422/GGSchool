@@ -8,14 +8,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color:rgb(234, 244, 250);
+            background-color: rgb(234, 244, 250);
             margin: 0;
             padding: 0;
         }
 
         .sidebar {
             width: 20%;
-            background-color:rgb(175, 223, 232);
+            background-color: rgb(175, 223, 232);
             padding: 20px;
             height: 100vh;
             position: fixed;
@@ -27,8 +27,7 @@
             font-weight: bold;
             color: #333;
             margin-bottom: 20px;
-            text-align:center;
-            
+            text-align: center;
         }
 
         .sidebar img {
@@ -45,8 +44,7 @@
             margin: 10px 0;
             font-size: 16px;
             font-weight: bold;
-            text-align:center;
-            
+            text-align: center;
         }
 
         .sidebar a:hover {
@@ -115,6 +113,21 @@
             height: auto;
             margin-bottom: 10px;
         }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
     </style>
 </head>
 <body>
@@ -125,6 +138,7 @@
         <h2>Admin Dashboard</h2>
         <a href="/manage_students" id="manageStudents">Manage Students</a>
         <a href="/manage_library" id="manageLibrary">Manage Library</a>
+        
         <a href="{{ url_for('logout') }}" id="logout">Logout</a>
     </div>
 
@@ -139,27 +153,27 @@
         <div class="cards">
             <div class="card">
                 <h3>Total Students</h3>
-                <img src="/static/img/group students.png" alt="School Logo" class="school-logo">
+                <img src="static/img/group students.png" alt="Students" class="school-logo">
                 <p>{{ total_students or "0" }}</p>
             </div>
             <div class="card">
                 <h3>Total Books</h3>
-                <img src="/static/img/student_16675754 books.gif" alt="School Logo" class="school-logo">
-            
+                <img src="/static/img/study_16681415_books.png" alt="Books" class="school-logo">
                 <p>{{ total_books or "0" }}</p>
             </div>
             <div class="card">
                 <h3>Total Borrowed Books</h3>
-                <img src="/static/img/study_16681415_books.png" alt="School Logo" class="school-logo">
+                <img src="static/img/student_16675754 books.gif" alt="Borrowed Books" class="school-logo">
                 <p>{{ total_issue_books or "0" }}</p>
             </div>
             <div class="card">
-                <h3>Total Return Books</h3>
-                <img src="/static/img/recycle_12829504.gif" alt="School Logo" class="school-logo">
-                <p>{{ total_returned_books or "0" }}</p>
+                <h3>Total Returned Books</h3>
+                <img src="static/img/team_15578534 present students.gif" alt="Returned Books" class="school-logo">
+                <p>{{ total_return_books or "0" }}</p>
             </div>
         </div>
-    </div>
+
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -178,10 +192,16 @@
             window.location.href = '/manage_library';
         });
 
+        document.getElementById('manageCertificates').addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = '/manage_certificates';
+        });
+
         document.getElementById('logout').addEventListener('click', function (event) {
             event.preventDefault();
             window.location.href = '{{ url_for("logout") }}';
         });
     </script>
+
 </body>
 </html>

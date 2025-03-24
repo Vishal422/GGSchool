@@ -4,88 +4,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Student</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
         }
         .container {
             max-width: 600px;
-            margin-top: 50px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        h2 {
-            font-weight: bold;
-            color: #007bff;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .btn {
-            border-radius: 20px;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .btn-secondary {
+        .btn-back {
             background-color: #6c757d;
-            border: none;
+            color: white;
         }
-        .btn-secondary:hover {
+        .btn-back:hover {
             background-color: #5a6268;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Edit Student</h2>
-        <form method="POST">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}" required>
+
+<div class="container">
+    <h2 class="text-center mb-4">✏️ Edit Student</h2>
+
+    <form method="POST" action="{{ url_for('edit_student', student_id=student.id) }}">
+        <div class="mb-3">
+            <label class="form-label">Student Name</label>
+            <input type="text" class="form-control" name="name" value="{{ student.name }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Student ID</label>
+            <input type="text" class="form-control" name="student_id" value="{{ student.student_id }}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Admission No</label>
+            <input type="text" class="form-control" name="admission_no" value="{{ student.admission_no }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select class="form-select" name="gender" required>
+                <option value="Male" {% if student.gender == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if student.gender == 'Female' %}selected{% endif %}>Female</option>
+                <option value="Other" {% if student.gender == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" name="dob" value="{{ student.dob }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" name="mobile_number" value="{{ student.mobile_number }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email ID</label>
+            <input type="email" class="form-control" name="email_id" value="{{ student.email_id }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <textarea class="form-control" name="parents_address" rows="3">{{ student.parents_address }}</textarea>
+        </div>
+
+        <h6 class="text-primary mt-3">Parent Details</h6>
+        <div class="mb-3">
+            <label class="form-label">Father's Name</label>
+            <input type="text" class="form-control" name="father_name" value="{{ student.father_name }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mother's Name</label>
+            <input type="text" class="form-control" name="mother_name" value="{{ student.mother_name }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Parents' Occupation</label>
+            <input type="text" class="form-control" name="parents_occupation" value="{{ student.parents_occupation }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Annual Income</label>
+            <input type="number" class="form-control" name="annual_income" value="{{ student.annual_income }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Dependants</label>
+            <input type="number" class="form-control" name="number_of_defendant" value="{{ student.number_of_defendant }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Religion</label>
+            <input type="text" class="form-control" name="religion" value="{{ student.religion }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Caste</label>
+            <input type="text" class="form-control" name="caste" value="{{ student.caste }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mother Tongue</label>
+            <input type="text" class="form-control" name="mother_tongue" value="{{ student.mother_tongue }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nationality</label>
+            <input type="text" class="form-control" name="nationality" value="{{ student.nationality }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" name="address" value="{{ student.address }}">
+        </div>
+
+        <h6 class="text-primary mt-3">Education Details</h6>
+        <div class="mb-3">
+            <label class="form-label">Previous School</label>
+            <input type="text" class="form-control" name="prev_school" value="{{ student.prev_school }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Previous Class</label>
+            <input type="text" class="form-control" name="prev_class" value="{{ student.prev_class }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Admission Sought For</label>
+            <input type="text" class="form-control" name="admission_sought_for" value="{{ student.admission_sought_for }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Enrolled School</label>
+            <input type="text" class="form-control" name="enrolled_school" value="{{ student.enrolled_school }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Attended Date</label>
+            <input type="date" class="form-control" name="last_attended_date" value="{{ student.last_attended_date }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Attended Year</label>
+            <input type="text" class="form-control" name="last_attended_year" value="{{ student.last_attended_year }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Passed Class</label>
+            <input type="text" class="form-control" name="passed_class" value="{{ student.passed_class }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Student Address</label>
+            <input type="text" class="form-control" name="student_address" value="{{ student.student_address }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Eighth Passed Year</label>
+            <input type="text" class="form-control" name="eighth_pass_year" value="{{ student.eighth_pass_year }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ninth Passed Year</label>
+            <input type="text" class="form-control" name="ninth_pass_year" value="{{ student.ninth_pass_year }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tenth Passed Year</label>
+            <input type="text" class="form-control" name="tenth_pass_year" value="{{ student.tenth_pass_year }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Upload Photo:</label>
+            <input type="file" class="form-control" name="student_photo" accept="image/*" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Upload Signature:</label>
+            <input type="file" class="form-control" name="student_signature" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple>
+        </div>
+
+        <div class="mb-4 text-center">
+            <a href="{{ url_for('manage_students') }}" class="btn btn-back">🔙 Back</a>
+            <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                🗑️ Delete Profile
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="mb-3">
-                <label for="gender" class="form-label">Gender</label>
-                <select class="form-select" id="gender" name="gender" required>
-                    <option value="Male" {% if student.gender == 'Male' %}selected{% endif %}>Male</option>
-                    <option value="Female" {% if student.gender == 'Female' %}selected{% endif %}>Female</option>
-                </select>
+            <div class="modal-body">
+                ⚠️ Are you sure you want to delete this student? This action cannot be undone.
             </div>
-            <div class="mb-3">
-                <label for="dob" class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" name="dob" value="{{ student.dob }}" required>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="{{ url_for('delete_student', student_id=student.id) }}" method="POST">
+                    <button type="submit" class="btn btn-danger">🗑️ Delete</button>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="mobile_number" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ student.mobile_number }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="email_id" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email_id" name="email_id" value="{{ student.email_id }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="admission_no" class="form-label">Admission Number</label>
-                <input type="text" class="form-control" id="admission_no" name="admission_no" value="{{ student.admission_no }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="admission_date" class="form-label">Admission Date</label>
-                <input type="date" class="form-control" id="admission_date" name="admission_date" value="{{ student.admission_date }}" required>
-            </div>
-            <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a href="{{ url_for('manage_students') }}" class="btn btn-secondary">Cancel</a>
-            </div>
-        </form>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

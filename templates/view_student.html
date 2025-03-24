@@ -3,70 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <title>View Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
         }
         .container {
-            max-width: 600px;
-            margin-top: 50px;
-            background-color: #fff;
-            padding: 30px;
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        h2 {
-            font-weight: bold;
-            color: #007bff;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        ul li span {
-            font-weight: bold;
-            color: #333;
-        }
-        .btn {
-            border-radius: 20px;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
-        .btn-secondary {
+        .btn-back {
             background-color: #6c757d;
-            border: none;
+            color: white;
         }
-        .btn-secondary:hover {
+        .btn-back:hover {
             background-color: #5a6268;
+        }
+        .profile-pic {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 10px;
+        }
+        .table th {
+            color: #333;
+            text-align: center;
+        }
+        .table td {
+            text-align: center;
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Student Profile</h2>
-        <ul>
-            <li><span>ID:</span> {{ student.id_number }}</li>
-            <li><span>Name:</span> {{ student.name }}</li>
-            <li><span>Gender:</span> {{ student.gender }}</li>
-            <li><span>Date of Birth:</span> {{ student.dob }}</li>
-            <li><span>Phone:</span> {{ student.mobile_number }}</li>
-            <li><span>Email:</span> {{ student.email_id }}</li>
-            <li><span>Admission No:</span> {{ student.admission_no }}</li>
-            <li><span>Admission Date:</span> {{ student.admission_date }}</li>
-        </ul>
+
+    <div class="container text-center">
+        <img src="/static/img/logo.png" alt="School Logo" class="school-logo mb-3" style="max-width: 150px; display: block; margin: 0 auto;">
+        <h2 class="text-center mb-4">📄 Student Details</h2>
+        <div class="school-name">Govt Girls High School, Malkhed</div>
+        <hr>
+        <h5 class="mb-3">👤 Personal Information</h5>
+
+        {% if student %}
+        <table class="table table-bordered">
+            <tr>
+                <th>👤 Name</th>
+                <td>{{ student.name }}</td>
+            </tr>
+            <tr>
+                <th>🎓 Student ID</th>
+                <td>{{ student.student_id }}</td>
+            </tr>
+            <tr>
+                <th>🆔 Admission No</th>
+                <td>{{ student.admission_no }}</td>
+            </tr>
+            <tr>
+                <th>⚧ Gender</th>
+                <td>{{ student.gender }}</td>
+            </tr>
+            <tr>
+                <th>🎂 Date of Birth</th>
+                <td>{{ student.dob }}</td>
+            </tr>
+            <tr>
+                <th>📱 Mobile Number</th>
+                <td>{{ student.mobile_number }}</td>
+            </tr>
+            <tr>
+                <th>✉️ Email ID</th>
+                <td>{{ student.email_id }}</td>
+            </tr>
+            <tr>
+                <th>📅 Admission Date</th>
+                <td>{{ student.admission_date }}</td>
+            </tr>
+            <tr>
+                <th>🆔 PEN Number</th>
+                <td>{{ student.pen_number }}</td>
+            </tr>
+            <tr>
+                <th>🆔 Aadhar Number</th>
+                <td>{{ student.aadhar_number }}</td>
+            </tr>
+            <tr>
+                <th>👨‍👩‍👧‍👦 Father's Name</th>
+                <td>{{ student.father_name }}</td>
+            </tr>
+            <tr>
+                <th>👩 Mother's Name</th>
+                <td>{{ student.mother_name }}</td>
+            </tr>
+            <tr>
+                <th>👨‍👩‍👧‍👦 Parents' Occupation</th>
+                <td>{{ student.parents_occupation }}</td>
+            </tr>
+            <tr>
+                <th>💰 Annual Income</th>
+                <td>{{ student.annual_income }}</td>
+            </tr>
+            <tr>
+                <th>👨‍👩‍👧‍👦 Dependants</th>
+                <td>{{ student.number_of_defendant }}</td>
+            </tr>
+            <tr>
+                <th>🛐 Religion</th>
+                <td>{{ student.religion }}</td>
+            </tr>
+            <tr>
+                <th>🛐 Caste</th>
+                <td>{{ student.caste }}</td>
+            </tr>
+            <tr>
+                <th>🗣️ Mother Tongue</th>
+                <td>{{ student.mother_tongue }}</td>
+            </tr>
+            <tr>
+                <th>🌍 Nationality</th>
+                <td>{{ student.nationality }}</td>
+            </tr>
+            <tr>
+                <th>🏡 Address</th>
+                <td>{{ student.address }}</td>
+            </tr>
+        </table>
+
+        <h5 class="mb-3">📚 Academic Information</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th>🏫 Previous School</th>
+                <td>{{ student.prev_school }}</td>
+            </tr>
+            <tr>
+                <th>📚 Previous Class</th>
+                <td>{{ student.prev_class }}</td>
+            </tr>
+            <tr>
+                <th>🎓 Admission Sought For</th>
+                <td>{{ student.admission_sought_for }}</td>
+            </tr>
+            <tr>
+                <th>🏫 Enrolled School</th>
+                <td>{{ student.enrolled_school }}</td>
+            </tr>
+            <tr>
+                <th>📅 Last Attended Date</th>
+                <td>{{ student.last_attended_date }}</td>
+            </tr>
+            <tr>
+                <th>📆 Last Attended Year</th>
+                <td>{{ student.last_attended_year }}</td>
+            </tr>
+            <tr>
+                <th>🎓 Passed Class</th>
+                <td>{{ student.passed_class }}</td>
+            </tr>
+            <tr>
+                <th>🏡 Student Address</th>
+                <td>{{ student.student_address }}</td>
+            </tr>
+            <tr>
+                <th>🎓 Eighth Passed Year</th>
+                <td>{{ student.eighth_pass_year }}</td>
+            </tr>
+            <tr>
+                <th>🎓 Ninth Passed Year</th>
+                <td>{{ student.ninth_pass_year }}</td>
+            </tr>
+            <tr>
+                <th>🎓 Tenth Passed Year</th>
+                <td>{{ student.tenth_pass_year }}</td>
+            </tr>
+        </table>
+
+        <h5 class="mb-3">🖼️ Student Documents</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th>📷 Student Photo</th>
+                <th>✍️ Signature</th>
+            </tr>
+            <tr>
+                <td>
+                    {% if student.student_photo %}
+                        <img src="{{ url_for('uploaded_file', filename=student.student_photo) }}" 
+                             alt="Photo" class="profile-pic">
+                    {% else %}
+                        No Photo
+                    {% endif %}
+                </td>
+                <td>
+                    {% if student.student_signature %}
+                        <img src="{{ url_for('uploaded_file', filename=student.student_signature) }}" 
+                             alt="Signature" class="profile-pic">
+                    {% else %}
+                        No Signature
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
         <div class="text-center mt-4">
-            <a href="{{ url_for('manage_students') }}" class="btn btn-secondary">Back</a>
+            <a href="{{ url_for('manage_students') }}" class="btn btn-back">🔙 Back</a>
         </div>
+
+        {% else %}
+            <p class="text-danger text-center">❌ Student not found.</p>
+            <div class="text-center">
+                <a href="{{ url_for('manage_students') }}" class="btn btn-back">🔙 Back</a>
+            </div>
+        {% endif %}
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+

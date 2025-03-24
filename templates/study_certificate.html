@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Certificate</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            padding: 20px;
+            border: 2px solid #000;
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #000;
+        }
+        .content {
+            margin-top: 20px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .info {
+            font-weight: bold;
+        }
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-weight: bold;
+        }
+        .stamp {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .date {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>PROFORMA FOR STUDY CERTIFICATE</h1>
+    <h2>Name, Full Postal Address & Telephone Number of Institution</h2>
+
+    <p class="date">Date: {{ current_date }}</p>
+
+    <div class="content">
+        <p>This is to certify that <span class="info">{{ student.name }}</span>,</p>
+        <p>S/o / D/o <span class="info">{{ student.father_name }}</span> & <span class="info">{{ student.mother_name }}</span>,</p>
+        <p>has studied from <span class="info">{{ student.prev_class }}</span> standard to <span class="info">{{ student.admission_sought_for }}</span> standard</p>
+        <p>in our Institution from <span class="info">{{ student.admission_year }}</span> to <span class="info">{{ student.last_attended_year }}</span> academic years.</p>
+
+        <p>The mother tongue of the candidate is <span class="info">{{ student.mother_tongue }}</span> as per the Admission register of the institution.</p>
+
+        <p>The above details are true and correct to the best of my knowledge.</p>
+    </div>
+
+    <div class="signature">
+        <p>Signature of Head of the Institution</p>
+        <p>Institution Seal</p>
+        <p>(Name in Block Letters _________________________)</p>
+    </div>
+
+    <div class="stamp">
+        <p>COUNTER SIGNED BY ME</p>
+        <p>Address, Seal & Office Telephone Number of the Block Educational Officer/DDPI</p>
+    </div>
+</body>
+</html>
